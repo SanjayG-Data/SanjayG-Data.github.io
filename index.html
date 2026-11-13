@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sanjay Kumar | AI Data Engineer</title>
+<meta name="description" content="Sanjay Kumar, AI Data Engineer. 8+ years across SQL, analytical databases, ETL modernization and streaming, with agentic AI, RAG and local LLMs built into the work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070a10;--panel:rgba(17,24,35,.72);--line:#1e2a3a;--text:#c9d4e3;--muted:#7a8aa0;--accent:#3ddc97;--accent2:#4cc2ff;--violet:#8b5cf6;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
+a{color:var(--accent2);text-decoration:none}a:hover{color:var(--accent)}
+
+/* Background */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.bg::before{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:48px 48px;opacity:.55;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 0,#000 15%,transparent 72%);mask-image:radial-gradient(ellipse at 50% 0,#000 15%,transparent 72%)}
+.blob{position:absolute;width:520px;height:520px;border-radius:50%;filter:blur(110px);opacity:.2;animation:drift 18s ease-in-out infinite alternate}
+.b1{background:var(--accent);top:-160px;left:-120px}
+.b2{background:var(--accent2);top:22%;right:-200px;animation-delay:-6s}
+.b3{background:var(--violet);bottom:-220px;left:30%;opacity:.13;animation-delay:-12s}
+@keyframes drift{to{transform:translate(60px,40px) scale(1.15)}}
+#bar{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:30}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Nav */
+nav{position:sticky;top:0;background:rgba(7,10,16,.75);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:20}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-family:var(--mono);color:var(--accent);font-weight:500}
+nav ul{display:flex;align-items:center;gap:24px;list-style:none;font-family:var(--mono);font-size:13px}
+nav ul a{color:var(--muted);transition:.2s}nav ul a:hover,nav ul a.active{color:var(--accent)}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:6px 11px;font-family:var(--mono);cursor:pointer}
+
+/* Buttons */
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:14px;padding:11px 20px;border:1px solid var(--accent);border-radius:8px;color:var(--accent);transition:.2s;display:inline-block}
+.btn.solid{background:linear-gradient(90deg,var(--accent),var(--accent2));border-color:transparent;color:#04110b;font-weight:500}
+.btn.ghost{border-color:var(--line);color:var(--text)}
+.btn.sm{padding:7px 14px;font-size:13px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(61,220,151,.25);color:var(--accent)}
+.btn.solid:hover{color:#04110b}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;padding-top:96px;padding-bottom:70px}
+.kicker{font-family:var(--mono);color:var(--accent);font-size:13px;display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--panel);padding:6px 14px;border-radius:30px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(61,220,151,.6)}100%{box-shadow:0 0 0 10px rgba(61,220,151,0)}}
+.hero h1{font-size:clamp(40px,6vw,66px);font-weight:800;line-height:1.05;letter-spacing:-.02em;color:#fff;margin:20px 0 16px}
+.hero p.lead{color:var(--muted);font-size:18px;max-width:560px;margin-bottom:30px}
+.term{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-family:var(--mono);font-size:13.5px;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 60px rgba(61,220,151,.08)}
+.term-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line)}
+.term-bar i{width:11px;height:11px;border-radius:50%}
+.term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+.term-bar span{margin-left:8px;color:var(--muted);font-size:12px}
+.term-body{padding:18px;min-height:190px;white-space:pre-wrap}
+.prompt{color:var(--accent)}.out{color:var(--muted)}
+.cursor{display:inline-block;width:8px;height:16px;background:var(--accent);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* Marquee */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding:14px 0;font-family:var(--mono);font-size:13px;color:var(--muted);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;width:max-content;animation:scroll 34s linear infinite}
+.track span{margin-right:44px;white-space:nowrap}.track span::before{content:"◆ ";color:var(--accent);font-size:9px;vertical-align:2px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* Sections */
+section{padding:84px 0}
+h2{font-size:30px;font-weight:700;letter-spacing:-.01em;color:#fff;margin-bottom:34px}
+h2::before{content:"// ";font-family:var(--mono);color:var(--accent);font-weight:400}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.stat,.card,.job{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.card{position:relative;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(61,220,151,.11),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover{border-color:rgba(61,220,151,.55);transform:translateY(-4px)}.card:hover::after{opacity:1}
+.card.feature{grid-column:1/-1;border-color:rgba(61,220,151,.35)}
+.card h3,.job h3{color:#fff;font-size:19px}
+.card p{color:var(--muted);font-size:15px;margin:10px 0 16px;flex:1}
+.about p{max-width:780px;margin-bottom:14px}
+.ai{margin-top:30px}
+.ai .card h3{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:500}
+.ai .card p{margin:8px 0 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:20px}
+.stat b{display:block;font-family:var(--mono);font-size:34px}
+.stat span{font-size:14px;color:var(--muted)}
+
+/* Timeline */
+.timeline{border-left:1px solid var(--line);padding-left:28px;display:grid;gap:20px}
+.job{position:relative;transition:border-color .25s}.job:hover{border-color:rgba(76,194,255,.5)}
+.job::before{content:"";position:absolute;left:-34px;top:30px;width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.meta{font-family:var(--mono);font-size:13px;color:var(--accent2);margin:2px 0 12px}
+.job ul{padding-left:18px;color:var(--muted);font-size:15px}.job li{margin-bottom:6px}
+
+/* Project bits */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;background:rgba(7,10,16,.7);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:16px;font-family:var(--mono);font-size:12.5px}
+.flow span{border:1px solid rgba(61,220,151,.4);color:var(--accent);padding:5px 10px;border-radius:6px;white-space:nowrap}
+.flow i{width:30px;height:2px;background-color:var(--line);background-image:linear-gradient(90deg,transparent,var(--accent),transparent);background-size:200% 100%;animation:flow 1.6s linear infinite}
+@keyframes flow{from{background-position:200% 0}to{background-position:-100% 0}}
+.pipe{font-family:var(--mono);font-size:13px;color:var(--accent);background:rgba(7,10,16,.7);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:16px;overflow-x:auto;white-space:nowrap}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.tag{font-family:var(--mono);font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:20px;color:var(--muted)}
+.tag.hl{color:var(--accent);border-color:var(--accent)}
+.tag.draft{color:#e0a84c;border-color:#e0a84c}
+.links{display:flex;flex-wrap:wrap;gap:18px;font-family:var(--mono);font-size:13px}
+.skills h3{font-family:var(--mono);font-size:14px;color:var(--accent2);margin-bottom:14px;font-weight:500}
+
+/* Recommendations */
+.quote p{font-size:16px;color:var(--text);font-style:italic}
+.quote p::before{content:"“";display:block;font-size:44px;line-height:.6;color:var(--accent);font-style:normal;margin-bottom:10px}
+.who b{display:block;color:#fff;font-size:15px}.who small{color:var(--muted)}
+.quotes{grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))}
+
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.two li{list-style:none;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.two li small{display:block;color:var(--muted)}
+
+.contact .box{text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:56px 24px;position:relative;overflow:hidden}
+.contact .box::before{content:"";position:absolute;inset:0;background:radial-gradient(600px circle at 50% 0,rgba(61,220,151,.14),transparent 65%);pointer-events:none}
+.contact h2::before{content:""}
+.contact p{color:var(--muted);max-width:520px;margin:0 auto 28px}
+.contact .btns{justify-content:center;position:relative}
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.reveal.in{opacity:1;transform:none}
+
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:64px}}
+@media(max-width:760px){
+  section{padding:58px 0}
+  .menu{display:block}
+  nav ul{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 18px}
+  nav ul.open{display:flex}nav ul li{padding:10px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important}
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div id="bar"></div>
+<div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+<nav><div class="wrap">
+  <a class="logo" href="#top">sanjay.kumar<span style="color:var(--muted)">;</span></a>
+  <button class="menu" id="menu" aria-label="Toggle menu">menu</button>
+  <ul id="links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#contact">contact</a></li>
+    <li><a class="btn sm" href="Sanjay_Data_engineer_8years.pdf" download>resume ↓</a></li>
+  </ul>
+</div></nav>
+
+<header class="hero wrap" id="top">
+  <div>
+    <div class="kicker"><span class="dot"></span>AI Data Engineer · Chennai, India</div>
+    <h1>Sanjay Kumar<br><span class="grad">Data engineering, AI-first.</span></h1>
+    <p class="lead">8+ years building data pipelines, tuning analytical databases and modernizing ETL. AI is built into how I do all of it: agentic workflows, RAG, local LLMs and AI-assisted coding.</p>
+    <div class="btns">
+      <a class="btn solid" href="#projects">View projects</a>
+      <a class="btn" href="Sanjay_Data_engineer_8years.pdf" download>Download resume</a>
+      <a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+  <div class="term">
+    <div class="term-bar"><i></i><i></i><i></i><span>sanjay — sql</span></div>
+    <div class="term-body" id="term"></div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div class="track" id="track">
+  <span>Exasol</span><span>Kafka</span><span>Debezium</span><span>PostgreSQL</span><span>Azure Data Factory</span><span>Python</span><span>Agentic AI</span><span>RAG</span><span>Local LLMs</span><span>MCP</span><span>MS SQL</span><span>Docker</span><span>Power BI</span><span>CI/CD</span>
+</div></div>
+
+<section id="about" class="wrap about reveal">
+  <h2>About</h2>
+  <p>I started in customer success and worked my way down the stack: data administration, ETL engineering, cloud data warehousing, and database engineering on analytical platforms. That path means I care as much about explaining a root cause clearly as I do about finding it.</p>
+  <p>Strong data foundations come first: SQL, execution plans, pipelines and warehouses that hold up under load. On top of that, I use AI in every part of the work, and I build tools that bring it to the problems data teams deal with daily.</p>
+
+  <div class="grid ai">
+    <div class="card"><h3>01 / investigate</h3><p>Local LLMs for log analysis and root-cause summaries, grounded in real evidence instead of guesses.</p></div>
+    <div class="card"><h3>02 / build</h3><p>AI-assisted coding to ship pipelines, tooling and prototypes faster without lowering the bar on quality.</p></div>
+    <div class="card"><h3>03 / automate</h3><p>Agentic workflows, RAG and MCP-style integrations that connect models directly to databases and operations.</p></div>
+  </div>
+
+  <div class="stats" id="stats">
+    <div class="stat"><b class="grad" data-n="8" data-s="+">8+</b><span>years in data and databases</span></div>
+    <div class="stat"><b class="grad" data-n="60" data-s="%">60%</b><span>faster data retrieval after migration</span></div>
+    <div class="stat"><b class="grad" data-n="80" data-s="%">80%</b><span>faster delivery with CI/CD pipelines</span></div>
+    <div class="stat"><b class="grad" data-n="40" data-s="+">40+</b><span>knowledge base articles authored</span></div>
+  </div>
+</section>
+
+<section id="experience" class="wrap reveal">
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div class="job">
+      <h3>Database Engineer · Exasol</h3>
+      <div class="meta">Dec 2025 – Present</div>
+      <ul>
+        <li>Troubleshoot Exasol environments across performance, connectivity, JDBC, UDFs, BucketFS and Docker/Linux migrations.</li>
+        <li>Analyze SQL profiles, execution plans, logs and monitoring data to isolate issues and optimize customer workloads.</li>
+        <li>Explore AI workflows with local LLMs, UDFs and MCP for faster investigation and RCA summaries.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <h3>Senior Software Engineer · OEConnection</h3>
+      <div class="meta">Apr 2023 – Nov 2025</div>
+      <ul>
+        <li>Led a large-scale Azure data warehousing project with ADF, turning legacy SSRS reports into Power BI dashboards.</li>
+        <li>Built CI/CD pipelines across environments, improving delivery timelines by up to 80%.</li>
+        <li>Designed an archiving strategy that cut storage overhead by 25% and improved performance by 30%.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <h3>Senior Data Asset Administrator · OEConnection</h3>
+      <div class="meta">Apr 2021 – May 2023</div>
+      <ul>
+        <li>Engineered ETL processes with SQL and SSIS, and automated workflows across teams.</li>
+        <li>Received the "OWN IT TODAY" award for ownership and accountability.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <h3>Data Asset Administrator → Customer Success · OEConnection</h3>
+      <div class="meta">Mar 2018 – Apr 2021</div>
+      <ul><li>Where it started: supporting customers, then managing the data behind the product.</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="wrap reveal">
+  <h2>Projects</h2>
+  <div class="grid">
+
+    <div class="card feature">
+      <div class="tags"><span class="tag hl">FEATURED · OPEN SOURCE</span></div>
+      <h3>Real-Time Banking Fraud Pipeline</h3>
+      <p>Real-time banking CDC pipeline from PostgreSQL to Exasol using Debezium, Kafka, Avro and Schema Registry, with in-database fraud scoring. Transactions are scored by a model within minutes of being written, and landing, cleansing, feature computation and scoring all run inside one analytical database.</p>
+      <div class="flow"><span>PostgreSQL</span><i></i><span>Debezium CDC</span><i></i><span>Kafka + Avro</span><i></i><span>Exasol</span><i></i><span>Python UDF scoring</span></div>
+      <div class="tags"><span class="tag">Exasol</span><span class="tag">Kafka</span><span class="tag">Debezium</span><span class="tag">Avro</span><span class="tag">PostgreSQL</span><span class="tag">Python</span><span class="tag">Docker</span></div>
+      <div class="links">
+        <a href="https://github.com/SanjayG-Data/real-time-banking-fraud-pipeline" target="_blank" rel="noopener">Source code →</a>
+        <a href="https://www.exasol.com/blog/near-real-time-fraud-scoring-with-exasol-kafka-and-debezium/" target="_blank" rel="noopener">Read the blog →</a>
+        <a href="https://github.com/exasol-labs/industry-solutions/" target="_blank" rel="noopener">Exasol Labs version →</a>
+      </div>
+    </div>
+
+    <div class="card feature">
+      <div class="tags"><span class="tag hl">OPEN SOURCE · MIT</span><span class="tag">Personal project</span></div>
+      <h3>ExaDoctor</h3>
+      <p>Read-only diagnostics CLI for Exasol. Scans a database for repeated SQL errors, slow or memory-heavy statements, swap activity, unusual storage growth and long-lived sessions, and reports every finding with the evidence behind it. If the data needed for a check isn't available, it says so instead of guessing. Includes per-statement deep dives, baseline snapshots for tracking change over time, and an optional plain-language summary from a local LLM.</p>
+      <div class="pipe">$ exadoctor scan --explain &nbsp;→&nbsp; findings + evidence + local LLM summary &nbsp;·&nbsp; no writes, no black box</div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Exasol</span><span class="tag">CLI</span><span class="tag">Local LLM</span><span class="tag">SQLite</span></div>
+      <div class="links">
+        <a href="https://github.com/SanjayG-Data/ExaDoctor" target="_blank" rel="noopener">Source code →</a>
+        <a href="https://github.com/SanjayG-Data/ExaDoctor/blob/main/docs/architecture.md" target="_blank" rel="noopener">Architecture →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills" class="wrap skills reveal">
+  <h2>Skills</h2>
+  <div class="grid">
+    <div class="card"><h3>AI</h3><div class="tags"><span class="tag">Agentic AI</span><span class="tag">RAG</span><span class="tag">Local LLMs</span><span class="tag">MCP</span><span class="tag">AI-assisted coding</span><span class="tag">Python UDFs</span></div></div>
+    <div class="card"><h3>Databases</h3><div class="tags"><span class="tag">Exasol</span><span class="tag">MS SQL</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">MariaDB</span><span class="tag">Query tuning</span></div></div>
+    <div class="card"><h3>Data engineering</h3><div class="tags"><span class="tag">Azure Data Factory</span><span class="tag">SSIS</span><span class="tag">Kafka</span><span class="tag">Debezium</span><span class="tag">Data warehousing</span><span class="tag">ETL</span></div></div>
+    <div class="card"><h3>Platform and tooling</h3><div class="tags"><span class="tag">Docker</span><span class="tag">Linux</span><span class="tag">AWS</span><span class="tag">Azure DevOps</span><span class="tag">CI/CD</span><span class="tag">Power BI</span></div></div>
+  </div>
+</section>
+
+<!-- Recommendations: excerpts from LinkedIn -->
+<section id="recommendations" class="wrap reveal">
+  <h2>Recommendations</h2>
+  <div class="grid quotes">
+    <div class="card quote">
+      <p>Sanjay was instrumental in designing and implementing Azure Pipelines using Azure DevOps and Azure Data Factory… He brought exceptional skill to fine-tuning complex SQL queries, leading to marked improvements in database performance and overall system stability.</p>
+      <div class="who"><b>Lokesh Peta</b><small>Engineering Manager &amp; Solution Architect · managed Sanjay directly</small></div>
+    </div>
+    <div class="card quote">
+      <p>He is sincere, hardworking and highly accountable. He likes to take on challenging projects and ensures even the smallest task is handled with care… and has an ability to remain focused even under extreme pressure.</p>
+      <div class="who"><b>Vasanth Dayalan</b><small>Director of Engineering · senior colleague</small></div>
+    </div>
+    <div class="card quote">
+      <p>Communication skills are amazing, and he always presents himself with a calm demeanour… I would wholeheartedly recommend Sanjay to anyone that is looking to add a skilled SQL developer to their team.</p>
+      <div class="who"><b>Luke Brown</b><small>Technical Implementation Consultant · same team</small></div>
+    </div>
+    <div class="card quote">
+      <p>Cooperative, open minded and fully devoted to the given task… always demonstrating wide knowledge of his area as well as leadership skills. Real gem!</p>
+      <div class="who"><b>Jakub Wierny</b><small>Database Consultant &amp; DB Team Manager</small></div>
+    </div>
+  </div>
+  <div class="links" style="margin-top:20px"><a href="https://www.linkedin.com/in/sanjay-kumar-66b20211b/details/recommendations/" target="_blank" rel="noopener">All recommendations on LinkedIn →</a></div>
+</section>
+
+<section class="wrap reveal">
+  <h2>Recognition and education</h2>
+  <div class="two">
+    <ul>
+      <li>Guiding Principle Award: Make Others Matter<small>OEConnection · 2022 and 2023</small></li>
+      <li>OWN IT TODAY Award<small>OEConnection · 2022–2023</small></li>
+    </ul>
+    <ul>
+      <li>MBA, International Business<small>Loyola College, Chennai · 2021</small></li>
+      <li>B.E., Electrical & Electronics Engineering<small>MNM Jain Engineering College, Chennai · 2017</small></li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="wrap contact reveal">
+  <div class="box">
+    <h2>Let's <span class="grad">talk data</span>.</h2>
+    <p>Open to conversations about data engineering, analytical databases and putting AI to practical use in data work.</p>
+    <div class="btns">
+      <a class="btn solid" href="mailto:sanjayin2011@gmail.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/sanjay-kumar-66b20211b/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/SanjayG-Data" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="yr"></span> Sanjay Kumar · Chennai, India</footer>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Scroll progress bar
+const bar = document.getElementById('bar');
+addEventListener('scroll', () => {
+  const h = document.documentElement;
+  bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+}, {passive: true});
+
+// Mobile menu
+const links = document.getElementById('links');
+document.getElementById('menu').addEventListener('click', () => links.classList.toggle('open'));
+links.addEventListener('click', e => { if (e.target.tagName === 'A') links.classList.remove('open'); });
+
+// Terminal typing effect
+const term = document.getElementById('term');
+const query = "SELECT role, focus FROM engineers WHERE name = 'Sanjay Kumar';";
+const result = "\n\n role  | AI Data Engineer\n focus | Pipelines, query tuning, agentic AI\n\n 1 row in set (8+ years)";
+function render(typed, done){
+  term.innerHTML = '<span class="prompt">sanjay@db:~$ </span>' + typed +
+    (done ? '<span class="out">' + result + '</span>\n<span class="prompt">sanjay@db:~$ </span>' : '') +
+    '<span class="cursor"></span>';
+}
+if (reduce) render(query, true);
+else {
+  let i = 0;
+  (function type(){
+    render(query.slice(0, i), i > query.length);
+    if (i++ <= query.length) setTimeout(type, 35);
+  })();
+}
+
+// Marquee: duplicate items for a seamless loop
+const track = document.getElementById('track');
+track.innerHTML += track.innerHTML;
+
+// Scroll reveal
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), {threshold: .1});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Count-up stats
+function countUp(el){
+  const n = +el.dataset.n, s = el.dataset.s || '', t0 = performance.now();
+  (function step(t){
+    const p = Math.min((t - t0) / 1200, 1);
+    el.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))) + s;
+    if (p < 1) requestAnimationFrame(step);
+  })(t0);
+}
+if (!reduce) {
+  const so = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.querySelectorAll('b[data-n]').forEach(countUp); so.unobserve(e.target); }
+  }), {threshold: .4});
+  so.observe(document.getElementById('stats'));
+}
+
+// Active nav link
+const navLinks = [...document.querySelectorAll('nav ul a[href^="#"]')];
+const ao = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+}), {rootMargin: '-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s => ao.observe(s));
+
+// Cursor spotlight on cards
+document.querySelectorAll('.card').forEach(c => c.addEventListener('mousemove', e => {
+  const r = c.getBoundingClientRect();
+  c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+  c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+}));
+</script>
+</body>
+</html>
